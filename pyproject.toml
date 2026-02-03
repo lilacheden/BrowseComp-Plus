@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=77.0.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "browsecomp-plus"
 version = "0.1.0"
@@ -33,3 +37,13 @@ gpu = [
 
 [tool.uv.sources]
 tevatron = { git = "https://github.com/texttron/tevatron.git", rev = "main" }
+
+[tool.setuptools]
+
+script-files = [
+  "scripts_build_index/download_indexes.sh",
+  "scripts_build_index/download_run_files.sh",
+]
+
+[tool.setuptools.packages.find]
+include = ["searcher*", "search_agent*", "scripts_evaluation*", "scripts_build_index*"]
