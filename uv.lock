@@ -440,8 +440,6 @@ dependencies = [
     { name = "pyngrok" },
     { name = "pyserini" },
     { name = "python-dotenv" },
-    { name = "qwen-agent", extra = ["gui", "mcp", "rag"] },
-    { name = "qwen-omni-utils" },
     { name = "rich" },
     { name = "tevatron" },
     { name = "torchvision" },
@@ -453,6 +451,10 @@ dependencies = [
 gpu = [
     { name = "deepspeed" },
     { name = "vllm" },
+]
+qwen = [
+    { name = "qwen-agent", extra = ["gui", "mcp", "rag"] },
+    { name = "qwen-omni-utils" },
 ]
 
 [package.metadata]
@@ -469,8 +471,8 @@ requires-dist = [
     { name = "pyngrok", specifier = ">=7.2.12" },
     { name = "pyserini", specifier = ">=1.2.0" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
-    { name = "qwen-agent", extras = ["gui", "mcp", "rag"], specifier = "==0.0.27" },
-    { name = "qwen-omni-utils", specifier = "==0.0.8" },
+    { name = "qwen-agent", extras = ["gui", "mcp", "rag"], marker = "extra == 'qwen'", specifier = "==0.0.27" },
+    { name = "qwen-omni-utils", marker = "extra == 'qwen'", specifier = "==0.0.8" },
     { name = "rich", specifier = ">=14.0.0" },
     { name = "tevatron", git = "https://github.com/texttron/tevatron.git?rev=main" },
     { name = "torchvision" },
@@ -478,7 +480,7 @@ requires-dist = [
     { name = "transformers", specifier = ">=4.53.2" },
     { name = "vllm", marker = "extra == 'gpu'", specifier = ">=0.9.0" },
 ]
-provides-extras = ["gpu"]
+provides-extras = ["gpu", "qwen"]
 
 [[package]]
 name = "cachetools"
