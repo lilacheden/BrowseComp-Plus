@@ -23,7 +23,7 @@ dependencies = [
     "tevatron",
     "torchvision",
     "tqdm>=4.67.1",
-    "transformers>=4.53.2",
+    "transformers>=4.53.2,<5.0",
     "tevatron @ git+https://github.com/texttron/tevatron.git@main",
 ]
 
