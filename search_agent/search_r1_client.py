@@ -82,7 +82,7 @@ print("Loading model and tokenizer...")
 tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
 dtype, device_map = get_model_dtype_and_device()
 model = transformers.AutoModelForCausalLM.from_pretrained(
-    model_id, torch_dtype=dtype, device_map=device_map
+    model_id, dtype=dtype, device_map=device_map
 )
 
 

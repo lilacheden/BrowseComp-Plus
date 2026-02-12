@@ -178,7 +178,7 @@ class FaissSearcher(BaseSearcher):
             normalize=model_args.normalize,
             lora_name_or_path=model_args.lora_name_or_path,
             cache_dir=model_args.cache_dir,
-            torch_dtype=torch_dtype,
+            dtype=torch_dtype,
             attn_implementation=get_attn_implementation(self.device) #model_args.attn_implementation,
         )
 
@@ -336,7 +336,7 @@ class ReasonIrSearcher(FaissSearcher):
         self.model = AutoModel.from_pretrained(
             model_args.model_name_or_path,
             cache_dir=model_args.cache_dir,
-            torch_dtype=torch_dtype,
+            dtype=torch_dtype,
             trust_remote_code=True,
         )
         self.model = self.model.to(self.device)
