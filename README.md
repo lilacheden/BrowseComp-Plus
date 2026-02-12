@@ -51,20 +51,13 @@ Then run:
 uv sync
 source .venv/bin/activate
 
-# With GPU extras (for local evaluation)
+# With GPU extras (required for local evaluation)
 uv sync --extra gpu
-source .venv/bin/activate
-uv pip install --no-build-isolation flash-attn # Needed for faiss
-
-# With Qwen extras (for Qwen and Tongyi agents - requires GPU hardware)
-uv sync --extra qwen --extra gpu
 source .venv/bin/activate
 uv pip install --no-build-isolation flash-attn # Needed for faiss
 ```
 
-> **Note:** The base installation supports API-based agents (OpenAI, Anthropic, Gemini, GLM) and all retrieval functionality. Optional extras:
-> - `--extra gpu`: Adds vllm and deepspeed for local GPU-accelerated evaluation with `scripts_evaluation/evaluate_run.py`
-> - `--extra qwen`: Adds qwen-agent and qwen-omni-utils for Qwen-3 and Tongyi-DeepResearch agents (requires GPU hardware for vLLM server, typically used with `--extra gpu`)
+> **Note:** The base installation supports all search agents and retrieval functionality. The `--extra gpu` option adds vllm and deepspeed, which are needed for running local GPU-accelerated evaluation with `scripts_evaluation/evaluate_run.py`.
 
 Additionally, this repo depends on java 21. One way to install it is through conda:
 
@@ -209,7 +202,7 @@ where you can find the decrypted trajectory data in `data/decrypted_run_files/`.
 
 To reproduce results from BrowseComp-Plus, you can refer to the following docs for running the various search agents:
 
-### API-Based Agents (Base Installation)
+### API-Based Agents (Base Installation, No GPU Required)
 - [OpenAI API](docs/openai.md)
 - [Gemini API](docs/gemini.md)
 - [Anthropic API](docs/anthropic.md)
@@ -217,9 +210,9 @@ To reproduce results from BrowseComp-Plus, you can refer to the following docs f
 
 ### Self-Hosted Model Agents (Requires GPU)
 - [OSS](docs/oss.md) - Requires GPU for vLLM server
-- [Qwen-3](docs/qwen.md) - Requires `--extra qwen` and GPU for vLLM server
+- [Qwen-3](docs/qwen.md) - Requires GPU for model serving
 - [Search-R1](docs/search-r1.md) - Requires GPU for model serving
-- [Tongyi-DeepResearch-30B-A3B](docs/tongyi.md) - Requires `--extra qwen` and GPU for vLLM server
+- [Tongyi-DeepResearch-30B-A3B](docs/tongyi.md) - Requires GPU for model serving
 
 As an alternative to deploying the retrieval server yourself locally, you can also use a [pre-deployed MCP server from NetMind](docs/netmind_mcp.md).
 
